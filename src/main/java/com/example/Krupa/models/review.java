@@ -37,7 +37,7 @@ public class review {
 
     @ManyToOne(optional=false, cascade=CascadeType.ALL)
     @JoinColumn(name="STATUS_ID")
-    private users STATUS_ID;
+    private status statusID;
 
 
     public String getMESSAGE() {
@@ -64,12 +64,12 @@ public class review {
         this.SCORE = SCORE;
     }
 
-    public users getSTATUS_ID() {
-        return STATUS_ID;
+    public status getStatusID() {
+        return statusID;
     }
 
-    public void setSTATUS_ID(users STATUS_ID) {
-        this.STATUS_ID = STATUS_ID;
+    public void setStatusID(status STATUS_ID) {
+        this.statusID = STATUS_ID;
     }
 
     public Integer getREVIEW_ID() {
@@ -102,5 +102,13 @@ public class review {
     public review(String MESSAGE, String NAME) {
         this.MESSAGE = MESSAGE;
         this.NAME = NAME;
+    }
+    public review(String NAME, String MESSAGE, users USER_ID, game GAME_ID, Double SCORE, status STATUS_ID) {
+        this.MESSAGE = MESSAGE;
+        this.NAME = NAME;
+        this.USER_ID = USER_ID;
+        this.GAME_ID = GAME_ID;
+        this.SCORE = SCORE;
+        this.statusID = STATUS_ID;
     }
 }

@@ -13,7 +13,7 @@ public class game {
     @Column(name = "GAME_ID")
     @SequenceGenerator(name = "GameIdSeq", sequenceName = "game_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "GameIdSeq")
-    private Integer GAME_ID;
+    private Integer gameID;
 
     @NotNull
     @Column(name = "NAME")
@@ -26,12 +26,12 @@ public class game {
 
 
 
-    public Integer getGAME_ID() {
-        return GAME_ID;
+    public Integer getGameID() {
+        return gameID;
     }
 
-    public void setGAME_ID(Integer GAME_ID) {
-        this.GAME_ID = GAME_ID;
+    public void setGameID(Integer GAME_ID) {
+        this.gameID = GAME_ID;
     }
 
     public String getNAME() {

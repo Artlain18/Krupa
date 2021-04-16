@@ -14,28 +14,39 @@ public class status {
     @Column(name = "STATUS_ID")
     @SequenceGenerator(name = "StatusIdSeq", sequenceName = "status_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "StatusIdSeq")
-    private Integer STATUS_ID;
+    private int statusID;
 
     @NotNull
     @Column(name = "STATUS_MESSAGE")
-    private String STATUS_MESSAGE;
+    private String statusMessage;
 
-    @OneToMany(mappedBy="STATUS_ID", fetch=FetchType.EAGER)
-    private List<review> reviewList = new ArrayList<review>();
+    @OneToMany(mappedBy="statusID", fetch=FetchType.EAGER)
+    private List<status> statusList = new ArrayList<status>();
 
-    public Integer getSTATUS_ID() {
-        return STATUS_ID;
+    public status(int STATUS_ID) {
+        this.statusID = STATUS_ID;
     }
 
-    public void setSTATUS_ID(Integer STATUS_ID) {
-        this.STATUS_ID = STATUS_ID;
+    public status() {
     }
 
-    public String getSTATUS_MESSAGE() {
-        return STATUS_MESSAGE;
+    public status(String statusMessage) {
+        this.statusMessage = statusMessage;
     }
 
-    public void setSTATUS_MESSAGE(String STATUS_MESSAGE) {
-        this.STATUS_MESSAGE = STATUS_MESSAGE;
+    public int getStatusID() {
+        return statusID;
+    }
+
+    public void setStatusID(Integer STATUS_ID) {
+        this.statusID = STATUS_ID;
+    }
+
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+
+    public void setStatusMessage(String STATUS_MESSAGE) {
+        this.statusMessage = STATUS_MESSAGE;
     }
 }

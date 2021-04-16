@@ -13,7 +13,7 @@ public class users {
     @Column(name = "USER_ID")
     @SequenceGenerator(name = "UserIdSeq", sequenceName = "users_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserIdSeq")
-    private Integer USER_ID;
+    private Integer userID;
 
 
     @NotNull
@@ -31,12 +31,12 @@ public class users {
     @OneToMany(mappedBy="USER_ID", fetch=FetchType.EAGER)
     private List<review> reviewList = new ArrayList<review>();
 
-    public Integer getUSER_ID() {
-        return USER_ID;
+    public Integer getUserID() {
+        return userID;
     }
 
-    public void setUSER_ID(Integer USER_ID) {
-        this.USER_ID = USER_ID;
+    public void setUserID(Integer USER_ID) {
+        this.userID = USER_ID;
     }
 
     public String getNAME() {
@@ -63,5 +63,11 @@ public class users {
         this.IS_ADMIN = IS_ADMIN;
     }
 
-
+    public users() {
+    }
+    public users(String NAME, String PASSWORD, boolean IS_ADMIN) {
+        this.NAME = NAME;
+        this.PASSWORD = PASSWORD;
+        this.IS_ADMIN = IS_ADMIN;
+    }
 }

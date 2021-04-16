@@ -1,22 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Список игр</title>
+    <title>Список пользователей</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5">
-    <div th:each="game : ${readGame}" class="alert alert-info mt-2">
-        <h3 th:text="${game.gameID}"/>
-        <p th:text="${game.NAME}"/>
-        <a th:href="'/game/' + ${game.gameID} + '/edit' " class="btn btn-warning">Редактировать</a><br>
-        <form th:action="'/game/' + ${game.gameID} + '/remove'" method = "post">
+    <h1>Список пользователей</h1>
+    <div th:each="user : ${users}" class="alert alert-info mt-2">
+        <h3 th:text="${user.userID}"/>
+        <p th:text="${user.NAME}"/>
+        <p th:text="${user.IS_ADMIN}"/>
+        <a th:href="'/user/' + ${user.userID}" class="btn btn-warning">Посмотреть</a>
+        <form th:action="'/users/' + ${user.userID} + '/remove'" method = "post">
             <button class="btn btn-warning" type = "submit">Удалить</button>
         </form>
     </div>
-
 </div>
 <div th:insert="blocks/footer :: footer"></div>
 </body>

@@ -8,11 +8,13 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5">
-    <div th:each="game : ${readGame}" class="alert alert-info mt-2">
-        <h3 th:text="${game.gameID}"/>
-        <p th:text="${game.NAME}"/>
-        <a th:href="'/game/' + ${game.gameID} + '/edit' " class="btn btn-warning">Редактировать</a><br>
-        <form th:action="'/game/' + ${game.gameID} + '/remove'" method = "post">
+    <div th:each="user : ${readUser}" class="alert alert-info mt-2">
+        <h3 th:text="${user.userID}"/>
+        <p th:text="${user.NAME}"/>
+        <p th:text="${user.PASSWORD}"/>
+        <p th:text="${user.IS_ADMIN}"/>
+        <a th:href="'/user/' + ${user.userID} + '/edit' " class="btn btn-warning">Изменить</a><br>
+        <form th:action="'/users/' + ${user.userID} + '/remove'" method = "post">
             <button class="btn btn-warning" type = "submit">Удалить</button>
         </form>
     </div>

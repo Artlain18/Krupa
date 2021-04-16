@@ -13,10 +13,10 @@
         <h3 th:text="${review.REVIEW_ID}"/>
         <p th:text="${review.NAME}"/>
         <p th:text="${review.MESSAGE}"/>
-        <p th:text="${review.getGAME_ID()}"/>
-        <p th:text="${review.getUSER_ID()}"/>
+        <p th:text="${review.GAME_ID.NAME}"/>
+        <p th:text="${review.USER_ID.NAME}"/>
         <p th:text="${review.SCORE}"/>
-        <p th:text="${review.getSTATUS_ID()}"/>
+        <p th:text="${review.statusID.statusMessage}"/>
         <a th:href="'/game/' + ${review.REVIEW_ID}">Читать</a>
     </div>
 </div>

@@ -2,6 +2,7 @@ package com.example.Krupa.controllers;
 
 import com.example.Krupa.models.game;
 import com.example.Krupa.repo.gameRepository;
+import com.example.Krupa.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,15 +17,19 @@ import java.util.Optional;
 
 @Controller
 public class GameController {
-
+    private final GameService Gameservice;
     @Autowired
     private gameRepository gameRepository;
+
+    public GameController(GameService gameservice) {
+        Gameservice = gameservice;
+    }
+
     @GetMapping("/games")
     public String getGames(Model model) {
-        List<game> games = gameRepository.findAll();
-        model.addAttribute("games", games);
+        //List<game> games = Gameservice.AllGames();
+        model.addAttribute("games", Gameservice.AllGames());
         return "games";
-
     }
 
     @GetMapping("/addGame")
@@ -34,8 +39,8 @@ public class GameController {
     }
     @PostMapping("/addGame")
     public String addGamePost(@RequestParam String NAME, Model model) {
-        game game = new game(NAME);
-        gameRepository.save(game);
+
+        Gameservice.addGame(NAME);
         return "redirect:/games";
     }
 
@@ -45,10 +50,13 @@ public class GameController {
             return "redirect:/error";
         }*/
 
-        Optional<game> game = gameRepository.findById(GAME_ID);
-        ArrayList<game> readGame = new ArrayList<>();
-        game.ifPresent(readGame::add);
-        model.addAttribute("readGame", readGame);
+        //Optional<game> game = gameRepository.findById(GAME_ID);
+        //game game = new game();
+        //Optional<game> game = Gameservice.ReadGame(GAME_ID);
+        //ArrayList<game> readGame = new ArrayList<>();
+        //game.ifPresent(readGame::add);
+        //ArrayList<game> readGame = Gameservice.ReadGame(GAME_ID);
+        model.addAttribute("readGame", Gameservice.ReadGame(GAME_ID));
         return "game-details";
 
     }
@@ -59,26 +67,28 @@ public class GameController {
             return "redirect:/error";
         }*/
 
-        Optional<game> game = gameRepository.findById(GAME_ID);
+        /*Optional<game> game = gameRepository.findById(GAME_ID);
         ArrayList<game> readGame = new ArrayList<>();
-        game.ifPresent(readGame::add);
-        model.addAttribute("readGame", readGame);
+        game.ifPresent(readGame::add);*/
+        model.addAttribute("readGame", Gameservice.ReadGame(GAME_ID));
         return "game-edit";
 
     }
 
     @PostMapping("/game/{id}/edit")
     public String addGamePostUpdate(@PathVariable(value = "id") Integer GAME_ID, @RequestParam String NAME, Model model) {
-        game game = gameRepository.findById(GAME_ID).orElseThrow();
+        /*game game = gameRepository.findById(GAME_ID).orElseThrow();
         game.setNAME(NAME);
-        gameRepository.save(game);
+        gameRepository.save(game);*/
+        Gameservice.UpdateGame(GAME_ID, NAME);
         return "redirect:/games";
     }
 
     @PostMapping("/game/{id}/remove")
     public String addGamePostDelete(@PathVariable(value = "id") Integer GAME_ID, Model model) {
-        game game = gameRepository.findById(GAME_ID).orElseThrow();
-        gameRepository.delete(gameRepository.findById(GAME_ID).orElseThrow());
+        /*game game = gameRepository.findById(GAME_ID).orElseThrow();
+        gameRepository.delete(gameRepository.findById(GAME_ID).orElseThrow());*/
+        Gameservice.DeleteGame(GAME_ID);
         return "redirect:/games";
     }
 

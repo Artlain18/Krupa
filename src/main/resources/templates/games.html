@@ -10,9 +10,9 @@
 <div class="container mt-5">
     <h1>Список игр</h1>
     <div th:each="game : ${games}" class="alert alert-info mt-2">
-        <h3 th:text="${game.GAME_ID}"/>
+        <h3 th:text="${game.gameID}"/>
         <p th:text="${game.NAME}"/>
-        <a th:href="'/game/' + ${game.GAME_ID}" class="btn btn-warning">Читать</a>
+        <a th:href="'/game/' + ${game.gameID}" class="btn btn-warning">Читать</a>
     </div>
 </div>
 <div th:insert="blocks/footer :: footer"></div>

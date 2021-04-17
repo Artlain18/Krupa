@@ -18,8 +18,6 @@ import java.util.Optional;
 @Controller
 public class GameController {
     private final GameService Gameservice;
-    @Autowired
-    private gameRepository gameRepository;
 
     public GameController(GameService gameservice) {
         Gameservice = gameservice;

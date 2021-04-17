@@ -13,4 +13,5 @@ import java.util.List;
 public interface reviewRepository extends JpaRepository<review, Integer> {
     //void getreviewBy(int id);
     List<review> findAllBystatusID(status statusID);
+    review findByreviewID(Integer REVIEW_ID);
 }

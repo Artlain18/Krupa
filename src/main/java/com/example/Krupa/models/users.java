@@ -3,18 +3,20 @@ package com.example.Krupa.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+//@IdClass(gameLike.class)
 @Table(name = "users")
-public class users {
+public class users implements Serializable{
     @Id
     @Column(name = "USER_ID")
     @SequenceGenerator(name = "UserIdSeq", sequenceName = "users_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserIdSeq")
     private Integer userID;
-
 
     @NotNull
     @Column(name = "NAME")
@@ -30,6 +32,12 @@ public class users {
 
     @OneToMany(mappedBy="USER_ID", fetch=FetchType.EAGER)
     private List<review> reviewList = new ArrayList<review>();
+
+    @OneToMany(mappedBy = "USER_ID")
+    Set<gameLike> gameLikes;
+
+    @OneToMany(mappedBy = "USER_ID")
+    Set<reviewLike> reviewLikes;
 
     public Integer getUserID() {
         return userID;

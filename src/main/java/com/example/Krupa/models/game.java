@@ -3,12 +3,15 @@ package com.example.Krupa.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+//@IdClass(gameLike.class)
 @Table(name = "game")
-public class game {
+public class game implements Serializable{
     @Id
     @Column(name = "GAME_ID")
     @SequenceGenerator(name = "GameIdSeq", sequenceName = "game_id_seq", allocationSize = 1)
@@ -21,6 +24,9 @@ public class game {
 
     @OneToMany(mappedBy="GAME_ID", fetch=FetchType.EAGER)
     private List<review> reviewList = new ArrayList<review>();
+
+    @OneToMany(mappedBy = "GAME_ID")
+    Set<gameLike> gameLikes;
 
 
 

@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавить лайк</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5 mb-5">
+    <h1>Добавление лайка</h1>
+    <form action="/addGameLike" method="post">
+        <input type="text" name="USER_ID", placeholder="Введите пользователя" class="fprm-control"><br>
+        <input type="text" name="GAME_ID", placeholder="Введите название игры" class="fprm-control"><br>
+        <input type="text" name="IS_GAME_LIKE", placeholder="Введите лайк" class="fprm-control"><br>
+        <button type="submit" class="btn btn-success">Добавить Лайк</button>
+    </form>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

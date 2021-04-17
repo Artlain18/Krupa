@@ -3,6 +3,7 @@ package com.example.Krupa.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "review")
@@ -11,7 +12,7 @@ public class review {
     @Column(name = "REVIEW_ID")
     @SequenceGenerator(name = "ReviewIdSeq", sequenceName = "review_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReviewIdSeq")
-    private Integer REVIEW_ID;
+    private Integer reviewID;
 
     @NotNull
     @Column(name="MESSAGE")
@@ -36,9 +37,12 @@ public class review {
     private Double SCORE;
 
     @ManyToOne(optional=false, cascade=CascadeType.ALL)
-    @JoinColumn(name="STATUS_ID")
+    @JoinColumn(name="STATUS_ID", referencedColumnName = "STATUS_ID")
     private status statusID;
 
+
+    @OneToMany(mappedBy = "REVIEW_ID")
+    Set<reviewLike> reviewLikes;
 
     public String getMESSAGE() {
         return MESSAGE;
@@ -72,12 +76,12 @@ public class review {
         this.statusID = STATUS_ID;
     }
 
-    public Integer getREVIEW_ID() {
-        return REVIEW_ID;
+    public Integer getReviewID() {
+        return reviewID;
     }
 
-    public void setREVIEW_ID(Integer REVIEW_ID) {
-        this.REVIEW_ID = REVIEW_ID;
+    public void setReviewID(Integer REVIEW_ID) {
+        this.reviewID = REVIEW_ID;
     }
 
     public String getNAME() {

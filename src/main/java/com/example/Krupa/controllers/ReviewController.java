@@ -76,4 +76,9 @@ public class ReviewController {
         Reviewservice.DeleteReview(REVIEW_ID);
         return "redirect:/reviews";
     }
+    @PostMapping("/review/{id}/{statusID}/ban")
+    public String addReviewPostBan(@PathVariable(value = "id") Integer REVIEW_ID, @PathVariable(value = "statusID") Integer STATUS_ID, Model model) {
+        Reviewservice.BanReview(REVIEW_ID, statusService.findBystatusID(STATUS_ID));
+        return "redirect:/reviews";
+    }
 }

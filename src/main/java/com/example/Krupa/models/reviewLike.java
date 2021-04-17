@@ -11,12 +11,12 @@ public class reviewLike implements Serializable {
 
     @ManyToOne
     @MapsId("USER_ID")
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     users USER_ID;
 
     @ManyToOne
     @MapsId("REVIEW_ID")
-    @JoinColumn(name = "GAME_ID")
+    @JoinColumn(name = "REVIEW_ID", referencedColumnName = "REVIEW_ID")
     review REVIEW_ID;
 
     @Column(name = "IS_REVIEW_LIKE")

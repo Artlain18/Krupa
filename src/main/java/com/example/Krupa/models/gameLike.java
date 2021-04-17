@@ -1,6 +1,9 @@
 package com.example.Krupa.models;
 
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,6 +17,7 @@ public class gameLike  implements Serializable{
 
     @ManyToOne
     @MapsId("USER_ID")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     users USER_ID;
 

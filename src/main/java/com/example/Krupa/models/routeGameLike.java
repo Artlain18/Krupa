@@ -1,5 +1,8 @@
 package com.example.Krupa.models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
@@ -7,8 +10,10 @@ import java.util.Objects;
 
 @Embeddable
 public class routeGameLike implements Serializable {
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Column(name = "USER_ID")
     Integer USER_ID;
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Column(name = "GAME_ID")
     Integer GAME_ID;
 

@@ -1,6 +1,8 @@
 package com.example.Krupa.models;
 
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -34,7 +36,7 @@ public class users implements Serializable{
     private List<review> reviewList = new ArrayList<review>();
 
     @OneToMany(mappedBy = "USER_ID")
-    Set<gameLike> gameLikes;
+    private List<gameLike> gameLikes = new ArrayList<gameLike>();
 
     @OneToMany(mappedBy = "USER_ID")
     Set<reviewLike> reviewLikes;

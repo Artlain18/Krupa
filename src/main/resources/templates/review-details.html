@@ -17,6 +17,9 @@
         <p th:text="${review.SCORE}"/>
         <p th:text="${review.statusID.statusMessage}"/>
         <a th:href="'/review/' + ${review.reviewID} + '/edit' " class="btn btn-warning">Редактировать</a><br>
+        <form th:action="'/review/' + ${review.reviewID} + '/5/ban'" method = "post">
+            <button class="btn btn-warning" type = "submit">Забанить</button>
+        </form>
         <form th:action="'/review/' + ${review.reviewID} + '/remove'" method = "post">
             <button class="btn btn-warning" type = "submit">Удалить</button>
         </form>

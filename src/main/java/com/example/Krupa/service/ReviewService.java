@@ -17,6 +17,7 @@ public class ReviewService {
 
     private reviewRepository ReviewRepository;
 
+
     @Autowired
     public ReviewService(reviewRepository ReviewRepository) {
         this.ReviewRepository = ReviewRepository;
@@ -48,9 +49,15 @@ public class ReviewService {
         return review;
     }
     public void DeleteReview(Integer REVIEW_ID) {
-        ReviewRepository.delete(ReviewRepository.findById(REVIEW_ID).orElseThrow());
+        //ReviewRepository.delete(ReviewRepository.findByreviewID(REVIEW_ID));
+        ReviewRepository.delete(ReviewRepository.findByreviewID(REVIEW_ID));
     }
-
+    public void BanReview(Integer REVIEW_ID, status STATUS_ID) {
+        //ReviewRepository.delete(ReviewRepository.findByreviewID(REVIEW_ID));
+        review review = ReviewRepository.findById(REVIEW_ID).orElseThrow();
+        review.setStatusID(STATUS_ID);
+        ReviewRepository.save(review);
+    }
     public review findByreviewID (Integer REVIEW_ID) {
 
         return ReviewRepository.findByreviewID(REVIEW_ID);

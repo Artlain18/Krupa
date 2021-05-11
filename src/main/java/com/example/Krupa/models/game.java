@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 public class game implements Serializable{
     @Id
     @Column(name = "GAME_ID")
+    @OrderBy("NAME")
     @SequenceGenerator(name = "GameIdSeq", sequenceName = "game_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "GameIdSeq")
     private Integer gameID;
@@ -26,7 +28,8 @@ public class game implements Serializable{
     private List<review> reviewList = new ArrayList<review>();
 
     @OneToMany(mappedBy = "GAME_ID")
-    Set<gameLike> gameLikes;
+    //@ManyToMany(mappedBy = "GAME_ID")
+    Set<gameLike> gameLikes;// = new HashSet<>();
 
 
 

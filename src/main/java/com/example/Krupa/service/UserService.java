@@ -34,6 +34,7 @@ public class UserService {
     public void DeleteUser(Integer USER_ID) {
         UsersRepository.delete(UsersRepository.findById(USER_ID).orElseThrow());
     }
+
     public ArrayList<users> ReadUser(Integer USER_ID) {
         Optional<users> users = UsersRepository.findById(USER_ID);
         ArrayList<users> readUser = new ArrayList<>();

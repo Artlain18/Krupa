@@ -5,8 +5,10 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -36,7 +38,9 @@ public class users implements Serializable{
     private List<review> reviewList = new ArrayList<review>();
 
     @OneToMany(mappedBy = "USER_ID")
-    private List<gameLike> gameLikes = new ArrayList<gameLike>();
+    //@ManyToMany(mappedBy = "USER_ID")
+    //private List<gameLike> gameLikes = new ArrayList<gameLike>();
+    private Set<gameLike>  gameLikes;// = new HashSet<>();
 
     @OneToMany(mappedBy = "USER_ID")
     Set<reviewLike> reviewLikes;

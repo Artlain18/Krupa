@@ -6,6 +6,7 @@ import com.example.Krupa.repo.gameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.OrderBy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +31,7 @@ public class GameService {
         return readGame;
     }
     public List<game> AllGames() {
+        //List<game> games = GameRepository.findAll();
         List<game> games = GameRepository.findAll();
         return games;
     }

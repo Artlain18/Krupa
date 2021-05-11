@@ -24,11 +24,11 @@ public class review {
 
 
 
-    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+    @ManyToOne(optional=false)//, cascade=CascadeType.ALL)
     @JoinColumn(name="USER_ID")
     private users USER_ID;
 
-    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+    @ManyToOne(optional=false)//, cascade=CascadeType.ALL)
     @JoinColumn(name="GAME_ID")
     private game GAME_ID;
 
@@ -36,7 +36,7 @@ public class review {
     @Column(name = "SCORE")
     private Double SCORE;
 
-    @ManyToOne(optional=false, cascade=CascadeType.ALL)
+    @ManyToOne(optional=false)//, cascade=CascadeType.ALL)
     @JoinColumn(name="STATUS_ID", referencedColumnName = "STATUS_ID")
     private status statusID;
 

@@ -12,7 +12,7 @@ INSERT INTO game VALUES
 (1, 'PROVERENO');*/
 
 /*INSERT INTO review VALUES
-(1, 'GOVNO', 'KAK MNE CYBER', 2, 1, 0.2, 1);*/
+(1, 'G', 'KAK MNE CYBER', 2, 1, 0.2, 1);*/
 
 
 

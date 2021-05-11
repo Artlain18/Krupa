@@ -50,7 +50,7 @@ public class ReviewService {
     }
     public void DeleteReview(Integer REVIEW_ID) {
         //ReviewRepository.delete(ReviewRepository.findByreviewID(REVIEW_ID));
-        ReviewRepository.delete(ReviewRepository.findByreviewID(REVIEW_ID));
+        ReviewRepository.delete(ReviewRepository.findById(REVIEW_ID).orElseThrow());
     }
     public void BanReview(Integer REVIEW_ID, status STATUS_ID) {
         //ReviewRepository.delete(ReviewRepository.findByreviewID(REVIEW_ID));

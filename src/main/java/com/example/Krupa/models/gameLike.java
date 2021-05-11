@@ -14,14 +14,15 @@ public class gameLike  implements Serializable{
 
     @EmbeddedId
     routeGameLike id;
-
     @ManyToOne
+    //@ManyToMany
     @MapsId("USER_ID")
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    //@OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     users USER_ID;
 
     @ManyToOne
+    //@ManyToMany
     @MapsId("GAME_ID")
     @JoinColumn(name = "GAME_ID", referencedColumnName = "GAME_ID")
     game GAME_ID;

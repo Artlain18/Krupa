@@ -89,6 +89,11 @@ public class GameController {
         Gameservice.DeleteGame(GAME_ID);
         return "redirect:/games";
     }
+    @GetMapping("/games/{id}/edit")
+    public String ReadGame(@PathVariable(value = "id") Integer GAME_ID, Model model) {
+        model.addAttribute("readGame", Gameservice.ReadGame(GAME_ID));
+        return "game";
+    }
 
 
 }

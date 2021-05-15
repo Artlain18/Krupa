@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Написать обзор</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+
+
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="content">
+                <h3>Создание обзора</h3>
+                <div class="text-input">
+                    <p>Введите название игры</p>
+                    <input type="text" placeholder="Введите название игры"><br>
+                    <p>Введите текст обзора на игру</p>
+                    <input type="text" placeholder="Введите текст"><br>
+                </div>
+            </div>
+            <div class="total">
+                <h3>Оценки</h3>
+                <ul>
+                    <li>Геймплей
+                        <input type="text"><br>
+                    </li>
+                    <li>Графика
+                        <input type="text"><br>
+                    </li>
+                    <li>Звук
+                        <input type="text"><br>
+                    </li>
+                    <li>Сюжет
+                        <input type="text"><br>
+                    </li>
+                    <li>Общая оценка
+                        <input type="text"><br>
+                    </li>
+                </ul>
+                <button type="submit" class="btn btn-success">Создать обзор</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

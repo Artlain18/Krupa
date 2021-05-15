@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список игр</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+</head>
+<body>
+
+
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container">
+        <h1>Список игр</h1>
+        <div th:each="game : ${games}" class="every_game">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/I63jgpg7-hw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3 th:text="${game.NAME}"/>
+            <a th:href="'/game/' + ${game.gameID}" class="btn btn-warning">Читать</a>
+        </div>
+    </div>
+
+</body>
+</html>

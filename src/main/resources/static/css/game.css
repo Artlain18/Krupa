@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Goblin+One&display=swap');
 body {
     font-family: 'Goblin One', cursive;
-    background: url("/img/Resident_Village_Art.jpeg");
+    background: black;
     padding: 10px 0;
+    background: black;
 }
+.black {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/img/Resident_Village_Art.jpeg") no-repeat;
+    z-index: 4444;
+}
+
 .container {
     background: url("/img/back.jpg");
     width: 800px;
@@ -85,6 +95,28 @@ body {
 .content p {
     line-height: 20px;
 }
+.every_game {
+    display: flex;
+    margin-bottom: 10px;
+    background: rgba(113,130,96,0.37);
+}
+.every_game a {
+    margin-top: auto;
+    margin-right: auto;
+}
+.text-input{
+    position: relative;
+    margin-top: 50px;
+}
+.err {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/img/error.jpg") no-repeat;
+    z-index: 4444;
+}
+
 
 
 

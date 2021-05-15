@@ -44,7 +44,7 @@ public class ReviewController {
 
     @GetMapping("/addReview")
     public String addReview(Model model) {
-        return "addReview";
+        return "wright_review";
 
     }
     @PostMapping("/addReview")

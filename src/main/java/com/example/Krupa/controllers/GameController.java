@@ -27,7 +27,8 @@ public class GameController {
     public String getGames(Model model) {
         //List<game> games = Gameservice.AllGames();
         model.addAttribute("games", Gameservice.AllGames());
-        return "games";
+        return "List_game";
+        //return "Error_classic";
     }
 
     @GetMapping("/addGame")
@@ -44,8 +45,8 @@ public class GameController {
 
     @GetMapping("/game/{id}")
     public String readGame(@PathVariable(value = "id") Integer GAME_ID, Model model) {
-        /*if(!gameRepository.existsById(GAME_ID)) {
-            return "redirect:/error";
+        /*if(Gameservice.findBygameID(GAME_ID)) {
+            return "Error_classic";
         }*/
 
         //Optional<game> game = gameRepository.findById(GAME_ID);

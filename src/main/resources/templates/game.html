@@ -10,38 +10,40 @@
 
 </head>
 <body>
-    <header th:insert="blocks/header :: header"></header>
-    <div class="container">
-        <div class="header">
-            <div class="logo_game"></div>
-            <div class="logo_publisher"></div>
-        </div>
-        <div class="nav">
-            <ul>
-                <li><a href="#">Понравилось</a></li>
-                <li><a href="#">Обзоры на игру</a></li>
-                <li><a href="#">Другие игры</a></li>
-            </ul>
-        </div>
-        <div class="content-wrapper">
-            <div class="content">
-                <h3>Описание</h3>
-                <p>Игра 10 из 10!</p>
+<div class="black">
+        <header th:insert="blocks/header :: header"></header>
+        <div class="container">
+            <div class="header">
+                <div class="logo_game"></div>
+                <div class="logo_publisher"></div>
             </div>
-            <div class="total">
-                <h3>Оценки</h3>
-                    <ul>
-                        <li>Геймплей</li>
-                        <li>Графика</li>
-                        <li>Звук</li>
-                        <li>Сюжет</li>
-                        <li>Общая оценка</li>
-                    </ul>
+            <div class="nav">
+                <ul>
+                    <li><a href="#">Понравилось</a></li>
+                    <li><a href="#">Обзоры на игру</a></li>
+                    <li><a href="#">Другие игры</a></li>
+                </ul>
             </div>
-            <div class="trailer">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/arEdruKxrQ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="content-wrapper">
+                <div class="content">
+                    <h3>Описание</h3>
+                    <p>Игра 10 из 10!</p>
+                </div>
+                <div class="total">
+                    <h3>Оценки</h3>
+                        <ul>
+                            <li>Геймплей</li>
+                            <li>Графика</li>
+                            <li>Звук</li>
+                            <li>Сюжет</li>
+                            <li>Общая оценка</li>
+                        </ul>
+                </div>
+                <div class="trailer">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/arEdruKxrQ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
-        </div>
-        </div>
+            </div>
+</div>
 </body>
 </html>

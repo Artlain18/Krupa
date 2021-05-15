@@ -28,7 +28,7 @@ public class GameController {
         //List<game> games = Gameservice.AllGames();
         model.addAttribute("games", Gameservice.AllGames());
         return "List_game";
-        //return "Error_classic";
+        //return "error_end";
     }
 
     @GetMapping("/addGame")

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Обзор</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+
+
+</head>
+<body>
+<div class="black">
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container">
+
+        <div class="nav">
+            <ul>
+                <li><a href="#">Понравилось</a></li>
+                <li><a href="#">Другие обзоры</a></li>
+                <li><a href="#">Другие игры</a></li>
+                <li><a th:href="'/review/edit' ">Редактировать</a></li>
+                <li><a href="#">Изменить статус</a></li>
+
+            </ul>
+        </div>
+        <div class="content-wrapper">
+            <div class="total">
+                <h3>Оценки</h3>
+                <ul>
+                    <li>Название обзора
+                        <p> Resident village</p><br>
+                    </li>
+                    <li>Автор
+                        <p> Artlain</p><br>
+                    </li>
+                    <li>Название игры
+                        <p> Resident village</p><br>
+                    </li>
+                    <li>Текст обзора
+                        <p> 10 из 10</p><br>
+                    </li>
+                    <li>Оценка обзора
+                        <p> 10</p><br>
+                    </li>
+                    <li>Статус
+                        <p> проверено</p><br>
+                    </li>
+                </ul>
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

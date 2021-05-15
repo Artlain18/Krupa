@@ -39,12 +39,14 @@ public class ReviewController {
         //Reviewservice.findAllBystatusID(statusService.findBystatusID(1))
         model.addAttribute("reviews", Reviewservice.AllReviews());
         //reviewRepository.getreviewBy(1);
-        return "allReviews";
+        //return "allReviews";
+        return "list_review";
     }
 
     @GetMapping("/addReview")
     public String addReview(Model model) {
-        return "wright_review";
+        //return "wright_review";
+        return "addReview";
 
     }
     @PostMapping("/addReview")
@@ -56,13 +58,15 @@ public class ReviewController {
     @GetMapping("/review/{id}")
     public String readReview(@PathVariable(value = "id") Integer REVIEW_ID, Model model) {
         model.addAttribute("readReview", Reviewservice.ReadReview(REVIEW_ID));
-        return "review-details";
+        //return "review-details";
+        return "show_review";
 
     }
     @GetMapping("/review/{id}/edit")
     public String editReview(@PathVariable(value = "id") Integer REVIEW_ID, Model model) {
         model.addAttribute("readReview", Reviewservice.ReadReview(REVIEW_ID));
-        return "review-edit";
+        //return "review-edit";
+        return "review_edit";
     }
 
     @PostMapping("/review/{id}/edit")

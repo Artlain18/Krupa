@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список игр</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+</head>
+<body>
+
+
+<header th:insert="blocks/header :: header"></header>
+<div class="container">
+    <h1>Список обзоров</h1>
+
+    <div th:each="review : ${reviews}" class="border_review mt-2">
+        <div class="total">
+            <h3 th:text="${review.reviewID}"/>
+            <ul>
+                <li th:text="${review.NAME}"/></li>
+                <li th:text="${review.MESSAGE}"/></li>
+                <li th:text="${review.GAME_ID.NAME}"/></li>
+                <li th:text="${review.USER_ID.NAME}"/></li>
+                <li th:text="${review.SCORE}"/></li>
+                <li th:text="${review.statusID.statusMessage}"/></li>
+
+            </ul>
+            <a th:href="'/review/' + ${review.reviewID}" class="btn btn-warning">Читать</a>
+        </div>
+
+
+</div>
+
+</body>
+</html>

@@ -35,9 +35,23 @@ public class GameService {
         List<game> games = GameRepository.findAll();
         return games;
     }
-    public game UpdateGame(Integer GAME_ID, String NAME) {
+    public game UpdateGame(game editGame, Integer GAME_ID) {
         game game = GameRepository.findById(GAME_ID).orElseThrow();
-        game.setNAME(NAME);
+        game.setNAME(editGame.getNAME());
+        game.setDESCRIBE(editGame.getDESCRIBE());
+        game.setBACK(editGame.getBACK());
+        game.setLOGO(editGame.getLOGO());
+        game.setGAMETRAILER(editGame.getGAMETRAILER());
+        game.setTEASER(editGame.getTEASER());
+        game.setPUBLISHER(editGame.getPUBLISHER());
+        GameRepository.save(game);
+        return game;
+    }
+    public game UpdateGameWithBack(game editGame, Integer GAME_ID, String BACK) {
+        game game = GameRepository.findById(GAME_ID).orElseThrow();
+        game.setNAME(editGame.getNAME());
+        game.setDESCRIBE(editGame.getDESCRIBE());
+        game.setBACK(BACK);
         GameRepository.save(game);
         return game;
     }

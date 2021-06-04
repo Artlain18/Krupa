@@ -14,38 +14,39 @@
         <header th:insert="blocks/header :: header"></header>
         <div class="container">
             <div class="header">
-                <div class="logo_game"></div>
-                <div class="logo_publisher"></div>
+                <div class="logo_game"><img th:src="${logo}" width="400"></div>
+                <div class="logo_publisher"><img th:src="${PUBLISHER}"></div>
             </div>
-            <div class="nav">
+            <div th:each="game: ${readGame}" class="nav">
                 <ul>
                     <li><a href="#">Понравилось</a></li>
                     <li><a href="#">Обзоры на игру</a></li>
-                    <li><a href="#">Другие игры</a></li>
+                    <li><a href="/games">Другие игры</a></li>
+                    <li><a th:href="'/game/' + ${game.gameID} + '/edits' ">Редактировать</a></li>
                 </ul>
             </div>
             <div class="content-wrapper">
-                <div class="content">
-                    <h3>Описание</h3>
-                    <p>Испытайте survival horror, каким его еще не видели, в восьмой части легендарной серии Resident Evil — Resident Evil Village.
+                <div th:each="game : ${readGame}" class="content">
+                    <h3 th:text="${game.NAME}"></h3>
+                    <p th:text="${game.DESCRIBE}"></p>
 
-                        Спустя несколько лет после кошмарных событий Resident Evil 7 biohazard, заслужившей признание критиков, начинается другая история. Итан Уинтерс и его жена Миа обосновались на новом месте, вдали от ужасов прошлого. Но не успели супруги насладиться безмятежной жизнью, как их вновь постигла трагедия.</p>
+
+                    <div class="trailer">
+                        <iframe width="560" height="315" th:src="${GAME_TRAILER}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
-                <div class="total">
-                    <h3>Оценки</h3>
-                        <ul>
-                            <li>Геймплей</li>
-                            <li>Графика</li>
-                            <li>Звук</li>
-                            <li>Сюжет</li>
-                            <li>Общая оценка</li>
-                        </ul>
-                </div>
-                <div class="trailer">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/arEdruKxrQ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+
             </div>
             </div>
 </div>
+
+<script th:inline="javascript">
+/*<![CDATA[*/
+
+var message = /*[[${gameBack}]]*/ 'default';
+console.log(message);
+document.body.style.background = "url('" + message + "') no-repeat fixed center top / cover";
+/*]]>*/
+</script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список игр</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+</head>
+<body>
+
+
+<header th:insert="blocks/header :: header"></header>
+<div class="container">
+    <form action="/addGame" method="post">
+        <input type="text" name="NAME", placeholder="Введите название игры" class="fprm-control"><br>
+        <input type="text" name="DESCRIBE", placeholder="Введите описание игры" class="fprm-control"><br>
+        <input type="text" name="BACK", placeholder="Введите back игры" class="fprm-control"><br>
+        <input type="text" name="LOGO", placeholder="Введите logo игры" class="fprm-control"><br>
+        <input type="text" name="GAMETRAILER", placeholder="Введите gametrailer игры" class="fprm-control"><br>
+        <input type="text" name="TEASER", placeholder="Введите teaser игры" class="fprm-control"><br>
+        <input type="text" name="PUBLISHER", placeholder="Введите publisher игры" class="fprm-control"><br>
+        <button type="submit" class="btn btn-success">Добавить игру</button>
+    </form>
+</div>
+
+</body>
+</html>

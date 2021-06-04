@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Редактирование игры</title>
+    <title>Список игр</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/game.css}">
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
-<div class="container mt-5 mb-5">
-    <h1>Редактирование игры</h1>
 
+
+<header th:insert="blocks/header :: header"></header>
+<div class="container">
+    <div th:each="game : ${readGame}" class="every_game">
         <form action="#" th:action="@{/update}" th:object="${readGame}" method="post">
             <input type="text" th:field="*{NAME}" id="NAME", placeholder="Введите название игры"><br>
             <input type="text" th:field="*{DESCRIBE}" id="DESCRIBE", placeholder="Введите описание игры"><br>
@@ -23,8 +23,8 @@
             <input readonly type="hidden" th:field="*{gameID}" id="GAME_ID", placeholder="Введите описание игры"><br>
             <button type="submit" class="btn btn-success">Обновить игру</button>
         </form>
-
+    </div>
 </div>
-<div th:insert="blocks/footer :: footer"></div>
+
 </body>
 </html>

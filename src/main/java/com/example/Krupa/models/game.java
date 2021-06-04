@@ -15,7 +15,6 @@ import java.util.Set;
 public class game implements Serializable{
     @Id
     @Column(name = "GAME_ID")
-    @OrderBy("NAME")
     @SequenceGenerator(name = "GameIdSeq", sequenceName = "game_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "GameIdSeq")
     private Integer gameID;
@@ -23,6 +22,50 @@ public class game implements Serializable{
     @NotNull
     @Column(name = "NAME")
     private String NAME;
+
+    @Column(name = "DESCRIBE")
+    private String DESCRIBE;
+
+    @Column(name = "BACK")
+    private String BACK;
+
+    @Column(name = "LOGO")
+    private String LOGO;
+
+    @Column(name = "GAMETRAILER")
+    private String GAMETRAILER;
+    @Column(name = "TEASER")
+    private String TEASER;
+    @Column(name = "PUBLISHER")
+    private String PUBLISHER;
+
+    public String getTEASER() {
+        return TEASER;
+    }
+
+    public void setTEASER(String TEASER) {
+        this.TEASER = TEASER;
+    }
+
+    public String getPUBLISHER() {
+        return PUBLISHER;
+    }
+
+    public void setPUBLISHER(String PUBLISHER) {
+        this.PUBLISHER = PUBLISHER;
+    }
+
+    public String getLOGO() {
+        return LOGO;
+    }
+
+    public void setLOGO(String LOGO) {
+        this.LOGO = LOGO;
+    }
+
+
+
+
 
     @OneToMany(mappedBy="GAME_ID", fetch=FetchType.EAGER)
     private List<review> reviewList = new ArrayList<review>();
@@ -33,7 +76,13 @@ public class game implements Serializable{
 
 
 
+    public String getBACK() {
+        return BACK;
+    }
 
+    public void setBACK(String BACK) {
+        this.BACK = BACK;
+    }
 
     public Integer getGameID() {
         return gameID;
@@ -50,10 +99,45 @@ public class game implements Serializable{
     public void setNAME(String NAME) {
         this.NAME = NAME;
     }
+    public String getDESCRIBE() {
+        return DESCRIBE;
+    }
+
+    public void setDESCRIBE(String DESCRIBE) {
+        this.DESCRIBE = DESCRIBE;
+    }
+
+    public String getGAMETRAILER() {
+        return GAMETRAILER;
+    }
+
+    public void setGAMETRAILER(String GAMETRAILER) {
+        this.GAMETRAILER = GAMETRAILER;
+    }
 
     public game() {
     }
 
+    public game(String NAME, String DESCRIBE) {
+        this.DESCRIBE = DESCRIBE;
+        this.NAME = NAME;
+    }
+    public game(String NAME, String DESCRIBE, String BACK, String LOGO) {
+        this.DESCRIBE = DESCRIBE;
+        this.NAME = NAME;
+        this.BACK = BACK;
+        this.LOGO = LOGO;
+    }
+    public game(String NAME, String DESCRIBE, String BACK, String LOGO, String GAMETRAILER, String TEASER, String PUBLISHER) {
+        this.DESCRIBE = DESCRIBE;
+        this.NAME = NAME;
+        this.BACK = BACK;
+        this.LOGO = LOGO;
+        this.GAMETRAILER = GAMETRAILER;
+        this.TEASER = TEASER;
+        this. PUBLISHER = PUBLISHER;
+
+    }
     public game(String NAME) {
         this.NAME = NAME;
     }

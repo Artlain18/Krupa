@@ -1,16 +1,16 @@
 package com.example.Krupa.controllers;
 
 import com.example.Krupa.models.game;
+import com.example.Krupa.models.users;
 import com.example.Krupa.repo.gameRepository;
 import com.example.Krupa.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,14 +26,16 @@ public class GameController {
     @GetMapping("/games")
     public String getGames(Model model) {
         //List<game> games = Gameservice.AllGames();
+
         model.addAttribute("games", Gameservice.AllGames());
+
         return "List_game";
         //return "error_end";
     }
 
     @GetMapping("/addGame")
     public String addGame(Model model) {
-        return "addGame";
+        return "addNewGame";
 
     }
     @PostMapping("/addGame")
@@ -73,13 +75,22 @@ public class GameController {
         return "game-edit";
 
     }
-
-    @PostMapping("/game/{id}/edit")
-    public String addGamePostUpdate(@PathVariable(value = "id") Integer GAME_ID, @RequestParam String NAME, Model model) {
+    @GetMapping("game/{id}/edits")
+    public String updateGamePostUpdate(@PathVariable(value = "id") Integer GAME_ID, Model model) {
         /*game game = gameRepository.findById(GAME_ID).orElseThrow();
         game.setNAME(NAME);
         gameRepository.save(game);*/
-        Gameservice.UpdateGame(GAME_ID, NAME);
+        game game = Gameservice.findBygameID(GAME_ID);
+            model.addAttribute("readGame", game);
+            return "game-edits";
+        }
+    @PostMapping("/update")
+    public String addGamePostUpdate(@Valid game game, BindingResult bindingResult) {
+        /*game game = gameRepository.findById(GAME_ID).orElseThrow();
+        game.setNAME(NAME);
+        gameRepository.save(game);*/
+
+        Gameservice.UpdateGame(game, game.getGameID());
         return "redirect:/games";
     }
 
@@ -92,6 +103,11 @@ public class GameController {
     }
     @GetMapping("/games/{id}/edit")
     public String ReadGame(@PathVariable(value = "id") Integer GAME_ID, Model model) {
+        game game = Gameservice.findBygameID(GAME_ID);
+        model.addAttribute("PUBLISHER", Gameservice.ReadGame(GAME_ID).get(0).getPUBLISHER());
+        model.addAttribute("GAME_TRAILER", Gameservice.ReadGame(GAME_ID).get(0).getGAMETRAILER());
+        model.addAttribute("gameBack", Gameservice.ReadGame(GAME_ID).get(0).getBACK());
+        model.addAttribute("logo", Gameservice.ReadGame(GAME_ID).get(0).getLOGO());
         model.addAttribute("readGame", Gameservice.ReadGame(GAME_ID));
         return "game";
     }

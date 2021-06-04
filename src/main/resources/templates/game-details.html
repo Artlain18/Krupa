@@ -11,7 +11,7 @@
     <div th:each="game : ${readGame}" class="alert alert-info mt-2">
         <h3 th:text="${game.gameID}"/>
         <p th:text="${game.NAME}"/>
-        <a th:href="'/game/' + ${game.gameID} + '/edit' " class="btn btn-warning">Редактировать</a><br>
+        <a th:href="'/game/' + ${game.gameID} + '/edits' " class="btn btn-warning">Редактировать</a><br>
         <form th:action="'/game/' + ${game.gameID} + '/remove'" method = "post">
             <button class="btn btn-warning" type = "submit">Удалить</button>
         </form>

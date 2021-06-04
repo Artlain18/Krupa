@@ -50,7 +50,7 @@ public class ReviewController {
 
     }
     @PostMapping("/addReview")
-    public String addReviewPost(@RequestParam String NAME, @RequestParam String MESSAGE, @RequestParam Integer USER_ID, @RequestParam Integer GAME_ID, @RequestParam Double SCORE, @RequestParam Integer STATUS_ID, Model model) {
+    public String addReviewPost(@RequestParam String NAME, @RequestParam String MESSAGE, @RequestParam Long USER_ID, @RequestParam Integer GAME_ID, @RequestParam Double SCORE, @RequestParam Integer STATUS_ID, Model model) {
         //userService.findByUSER_ID(USER_ID);
         Reviewservice.addReview(NAME, MESSAGE, userService.findByuserID(USER_ID), gameService.findBygameID(GAME_ID), SCORE, statusService.findBystatusID(STATUS_ID));
         return "redirect:/reviews";

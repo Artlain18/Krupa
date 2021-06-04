@@ -8,11 +8,11 @@ import java.util.Objects;
 @Embeddable
 public class routeReviewLike implements Serializable {
     @Column(name = "USER_ID")
-    Integer USER_ID;
+    Long USER_ID;
     @Column(name = "REVIEW_ID")
     Integer REVIEW_ID;
 
-    public routeReviewLike(Integer USER_ID, Integer REVIEW_ID) {
+    public routeReviewLike(Long USER_ID, Integer REVIEW_ID) {
         this.USER_ID = USER_ID;
         this.REVIEW_ID = REVIEW_ID;
     }
@@ -30,11 +30,11 @@ public class routeReviewLike implements Serializable {
         return Objects.hash(USER_ID, REVIEW_ID);
     }
 
-    public Integer getUSER_ID() {
+    public Long getUSER_ID() {
         return USER_ID;
     }
 
-    public void setUSER_ID(Integer USER_ID) {
+    public void setUSER_ID(Long USER_ID) {
         this.USER_ID = USER_ID;
     }
 

@@ -12,7 +12,7 @@ import java.util.Objects;
 public class routeGameLike implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @Column(name = "USER_ID")
-    Integer USER_ID;
+    Long USER_ID;
     @OnDelete(action = OnDeleteAction.CASCADE)
     @Column(name = "GAME_ID")
     Integer GAME_ID;
@@ -33,16 +33,16 @@ public class routeGameLike implements Serializable {
 
     public routeGameLike() {
     }
-    public routeGameLike(Integer USER_ID, Integer GAME_ID) {
+    public routeGameLike(Long USER_ID, Integer GAME_ID) {
         this.USER_ID = USER_ID;
         this.GAME_ID = GAME_ID;
     }
 
-    public Integer getUSER_ID() {
+    public Long getUSER_ID() {
         return USER_ID;
     }
 
-    public void setUSER_ID(Integer USER_ID) {
+    public void setUSER_ID(Long USER_ID) {
         this.USER_ID = USER_ID;
     }
 

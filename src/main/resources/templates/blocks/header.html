@@ -6,6 +6,9 @@
         </a>
 
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
             <a class="p-2 text-light" href="/reviews">Список обзоров</a>
             <a class="p-2 text-light" href="/games">Список игр</a>
             <a class="p-2 text-light" href="/my">Мои обзоры</a>

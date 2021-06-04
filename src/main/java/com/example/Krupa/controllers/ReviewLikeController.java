@@ -34,7 +34,7 @@ public class ReviewLikeController {
         return "addReviewLike";
     }
     @PostMapping("/addReviewLike")
-    public String addReviewLikesPost(@RequestParam Integer USER_ID, @RequestParam Integer REVIEW_ID,  Model model) {
+    public String addReviewLikesPost(@RequestParam Long USER_ID, @RequestParam Integer REVIEW_ID,  Model model) {
         users user = userService.findByuserID(USER_ID);
         review review = reviewService.findByreviewID(REVIEW_ID)   ;
         reviewLikeService.addReviewLikes(user, review);

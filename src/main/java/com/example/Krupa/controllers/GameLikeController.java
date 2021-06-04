@@ -35,7 +35,7 @@ public class GameLikeController {
         return "addGameLike";
     }
     @PostMapping("/addGameLike")
-    public String addGameLikesPost(@RequestParam Integer USER_ID, @RequestParam Integer GAME_ID,  Model model) {
+    public String addGameLikesPost(@RequestParam Long USER_ID, @RequestParam Integer GAME_ID,  Model model) {
         users user = userService.findByuserID(USER_ID);
         game game = gameService.findBygameID(GAME_ID)   ;
         gameLikeService.addGameLikes(user, game);

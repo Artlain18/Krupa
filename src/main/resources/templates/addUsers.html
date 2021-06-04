@@ -6,13 +6,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+
 <header th:insert="blocks/header :: header"></header>
 <div class="container mt-5 mb-5">
     <h1>Добавление пользователя</h1>
-    <form action="/addUsers" method="post">
+    <div th:if="${message == null}"></div>
+    <form action="#" th:action="@{/addUsers}" th:object="${user}" method="post">
+        <div th:if="${message}" class="er">Такой пользователь уже существует</div>
         <input type="text" name="NAME", placeholder="Введите логин" class="fprm-control"><br>
-        <input type="text" name="PASSWORD", placeholder="Введите пароль" class="fprm-control"><br>
-        <input type="text" name="IS_ADMIN", placeholder="Введите true если админ, иначе false" class="fprm-control"><br>
+
+
+        <input type="password" name="PASSWORD", placeholder="Введите пароль" class="fprm-control"><br>
+
         <button type="submit" class="btn btn-success">Зарегестрировать</button>
     </form>
 </div>

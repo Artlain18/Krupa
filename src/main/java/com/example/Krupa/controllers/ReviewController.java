@@ -3,6 +3,7 @@ package com.example.Krupa.controllers;
 
 import com.example.Krupa.models.review;
 
+import com.example.Krupa.models.users;
 import com.example.Krupa.repo.reviewRepository;
 import com.example.Krupa.service.GameService;
 import com.example.Krupa.service.ReviewService;
@@ -38,6 +39,16 @@ public class ReviewController {
         //List<review> reviews = Reviewservice.findAllBystatusID(statusService.findBystatusID(1));
         //Reviewservice.findAllBystatusID(statusService.findBystatusID(1))
         model.addAttribute("reviews", Reviewservice.AllReviews());
+        //reviewRepository.getreviewBy(1);
+        //return "allReviews";
+        return "list_review";
+    }@GetMapping("/myReviews")
+    public String getMyReview(Model model) {
+        //List<review> reviews = Reviewservice.findAllBystatusID(statusService.findBystatusID(1));
+        //Reviewservice.findAllBystatusID(statusService.findBystatusID(1))
+        String name = userService.getCurrentUsername();
+        users user = userService.findByName(name);
+        model.addAttribute("reviews", Reviewservice.findAllUSER_ID(userService.findByuserID(user.getUserID())));
         //reviewRepository.getreviewBy(1);
         //return "allReviews";
         return "list_review";

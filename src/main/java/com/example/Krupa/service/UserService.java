@@ -5,6 +5,8 @@ import com.example.Krupa.models.users;
 import com.example.Krupa.repo.gameRepository;
 import com.example.Krupa.repo.usersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,6 +27,10 @@ public class UserService implements UserDetailsService {
 
     public users findByuserID (Long USER_ID) {
         return UsersRepository.findByuserID(USER_ID);
+    }
+    public users findByName (String NAME)
+    {
+        return UsersRepository.findByNAME(NAME);
     }
     public users addUsers(String NAME, String PASSWORD, boolean IS_ADMIN) {
         users user = new users(NAME, PASSWORD, IS_ADMIN);
@@ -60,4 +66,10 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String NAME) throws UsernameNotFoundException {
         return UsersRepository.findByNAME(NAME);
     }
+    public String getCurrentUsername()
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getName();
+    }
+
 }

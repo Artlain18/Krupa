@@ -46,7 +46,7 @@ public class users implements UserDetails, Serializable{
     @CollectionTable(name= "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
-    @OneToMany(mappedBy="USER_ID", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="userID", fetch=FetchType.EAGER)
     private List<review> reviewList = new ArrayList<review>();
 
     @OneToMany(mappedBy = "USER_ID")

@@ -24,9 +24,9 @@ public class review {
 
 
 
-    @ManyToOne(optional=false)//, cascade=CascadeType.ALL)
-    @JoinColumn(name="USER_ID")
-    private users USER_ID;
+    @ManyToOne(optional=false)
+    @JoinColumn(name="USER_ID", referencedColumnName = "USER_ID")
+    private users userID;
 
     @ManyToOne(optional=false)//, cascade=CascadeType.ALL)
     @JoinColumn(name="GAME_ID")
@@ -93,11 +93,11 @@ public class review {
     }
 
     public users getUSER_ID() {
-        return USER_ID;
+        return userID;
     }
 
     public void setUSER_ID(users USER_ID) {
-        this.USER_ID = USER_ID;
+        this.userID = USER_ID;
     }
 
     public review() {
@@ -110,7 +110,7 @@ public class review {
     public review(String NAME, String MESSAGE, users USER_ID, game GAME_ID, Double SCORE, status STATUS_ID) {
         this.MESSAGE = MESSAGE;
         this.NAME = NAME;
-        this.USER_ID = USER_ID;
+        this.userID = USER_ID;
         this.GAME_ID = GAME_ID;
         this.SCORE = SCORE;
         this.statusID = STATUS_ID;

@@ -31,6 +31,10 @@ public class ReviewService {
         List<review> reviews = ReviewRepository.findAll();
         return reviews;
     }
+    public List<review> findAllUSER_ID (users USER_ID) {
+        List<review> reviews = ReviewRepository.findAllByuserID(USER_ID);
+        return reviews;
+    }
     public List<review> findAllBystatusID (status statusID) {
         List<review> reviews = ReviewRepository.findAllBystatusID(statusID);
         return reviews;

@@ -13,36 +13,13 @@
 <header th:insert="blocks/header :: header"></header>
 <div class="container">
     <div class="content-wrapper">
-        <div class="content">
-            <h3>Изменение обзора</h3>
-            <div class="text-input">
-                <p>Измените название игры</p>
-                <input type="text" placeholder="Введите название игры"><br>
-                <p>Измените текст обзора на игру</p>
-                <input type="text" placeholder="Введите текст"><br>
-            </div>
-        </div>
-        <div class="total">
-            <h3>Изменить оценки</h3>
-            <ul>
-                <li>Геймплей
-                    <input type="text"><br>
-                </li>
-                <li>Графика
-                    <input type="text"><br>
-                </li>
-                <li>Звук
-                    <input type="text"><br>
-                </li>
-                <li>Сюжет
-                    <input type="text"><br>
-                </li>
-                <li>Изменить общую оценку
-                    <input type="text"><br>
-                </li>
-            </ul>
-            <button type="submit" class="btn btn-success">Изменить обзор</button>
-        </div>
+        <form action="#" th:action="@{/updateReview}" th:object="${readReview}" method="post">
+            <input type="text" th:field="*{NAME}" id="NAME", placeholder="Измените название обзора"><br>
+            <input type="text" th:field="*{MESSAGE}" id="MESSAGE", placeholder="Измените текст обзора"><br>
+            <input type="text" th:field="*{SCORE}" id="SCORE", placeholder="Введите описание игры"><br>
+            <input readonly type="hidden" th:field="*{reviewID}" id="REVIEW_ID", placeholder="Введите описание игры"><br>
+            <button type="submit" class="btn btn-success">Обновить игру</button>
+        </form>
     </div>
 
 </div>

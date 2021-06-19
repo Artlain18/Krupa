@@ -27,6 +27,12 @@ public class ReviewService {
         review newReview = new review(NAME, MESSAGE, USER_ID, GAME_ID, SCORE, STATUS_ID);
         return ReviewRepository.save(newReview);
     }
+    public review addNewReview(review review) {
+        status status = new status(3);
+        review.setStatusID(status);
+
+        return ReviewRepository.save(review);
+    }
     public List<review> AllReviews() {
         List<review> reviews = ReviewRepository.findAll();
         return reviews;
@@ -52,6 +58,14 @@ public class ReviewService {
         ReviewRepository.save(review);
         return review;
     }
+    public review UpdateOldReview(review editReview, Integer REVIEW_ID) {
+        review review = ReviewRepository.findById(REVIEW_ID).orElseThrow();
+        review.setNAME(editReview.getNAME());
+        review.setMESSAGE(editReview.getMESSAGE());
+        review.setSCORE(editReview.getSCORE());
+        ReviewRepository.save(review);
+        return review;
+    }
     public void DeleteReview(Integer REVIEW_ID) {
         //ReviewRepository.delete(ReviewRepository.findByreviewID(REVIEW_ID));
         ReviewRepository.delete(ReviewRepository.findById(REVIEW_ID).orElseThrow());
@@ -62,7 +76,7 @@ public class ReviewService {
         review.setStatusID(STATUS_ID);
         ReviewRepository.save(review);
     }
-    public review findByreviewID (Integer REVIEW_ID) {
+    public review findByReviewID (Integer REVIEW_ID) {
 
         return ReviewRepository.findByreviewID(REVIEW_ID);
     }

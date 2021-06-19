@@ -35,13 +35,15 @@ public class GameController {
 
     @GetMapping("/addGame")
     public String addGame(Model model) {
+        game game = new game();
+        model.addAttribute("readGame", game);
         return "addNewGame";
 
     }
     @PostMapping("/addGame")
-    public String addGamePost(@RequestParam String NAME, Model model) {
+    public String addGamePost(@Valid @ModelAttribute("game") game game, Model model) {
 
-        Gameservice.addGame(NAME);
+        Gameservice.addGame(game);
         return "redirect:/games";
     }
 

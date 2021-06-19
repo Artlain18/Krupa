@@ -11,15 +11,18 @@
 
 <header th:insert="blocks/header :: header"></header>
 <div class="container">
-    <form action="/addGame" method="post">
-        <input type="text" name="NAME", placeholder="Введите название игры" class="fprm-control"><br>
-        <input type="text" name="DESCRIBE", placeholder="Введите описание игры" class="fprm-control"><br>
-        <input type="text" name="BACK", placeholder="Введите back игры" class="fprm-control"><br>
-        <input type="text" name="LOGO", placeholder="Введите logo игры" class="fprm-control"><br>
-        <input type="text" name="GAMETRAILER", placeholder="Введите gametrailer игры" class="fprm-control"><br>
-        <input type="text" name="TEASER", placeholder="Введите teaser игры" class="fprm-control"><br>
-        <input type="text" name="PUBLISHER", placeholder="Введите publisher игры" class="fprm-control"><br>
-        <button type="submit" class="btn btn-success">Добавить игру</button>
+
+    <form action="#" th:action="@{/addGame}" th:object="${readGame}" method="post">
+        <input type="text" name="NAME", placeholder="Введите название игры"><br>
+        <input type="text" name="DESCRIBE", placeholder="Введите описание игры"><br>
+        <input type="text" name="BACK", placeholder="Введите back игры"><br>
+        <input type="text" name="LOGO", placeholder="Введите logo игры"><br>
+        <input type="text" name="GAMETRAILER", placeholder="Введите game trailer игры"><br>
+        <input type="text" name="TEASER", placeholder="Введите teaser игры"><br>
+        <input type="text" name="PUBLISHER", placeholder="Введите publisher игры"><br>
+
+
+        <button type="submit" class="btn btn-success">Зарегестрировать</button>
     </form>
 </div>
 

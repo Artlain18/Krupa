@@ -24,6 +24,9 @@ public class GameService {
         game newGame = new game(NAME);
         return GameRepository.save(newGame);
     }
+    public game addGame(game game) {
+        return GameRepository.save(game);
+    }
     public ArrayList<game> ReadGame(Integer GAME_ID) {
         Optional<game> game = GameRepository.findById(GAME_ID);
         ArrayList<game> readGame = new ArrayList<>();

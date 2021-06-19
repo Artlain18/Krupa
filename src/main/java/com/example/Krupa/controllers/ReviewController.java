@@ -1,6 +1,7 @@
 package com.example.Krupa.controllers;
 
 
+import com.example.Krupa.models.game;
 import com.example.Krupa.models.review;
 
 import com.example.Krupa.models.users;
@@ -12,11 +13,10 @@ import com.example.Krupa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -56,14 +56,21 @@ public class ReviewController {
 
     @GetMapping("/addReview")
     public String addReview(Model model) {
-        //return "wright_review";
-        return "addReview";
+        review review = new review();
+
+        model.addAttribute("readReview", review);
+
+        return "addNewReview";
 
     }
     @PostMapping("/addReview")
-    public String addReviewPost(@RequestParam String NAME, @RequestParam String MESSAGE, @RequestParam Long USER_ID, @RequestParam Integer GAME_ID, @RequestParam Double SCORE, @RequestParam Integer STATUS_ID, Model model) {
+    public String addReviewPost(@Valid @ModelAttribute("review") review review, Model model) {
         //userService.findByUSER_ID(USER_ID);
-        Reviewservice.addReview(NAME, MESSAGE, userService.findByuserID(USER_ID), gameService.findBygameID(GAME_ID), SCORE, statusService.findBystatusID(STATUS_ID));
+
+        String name = userService.getCurrentUsername();
+        users user = userService.findByName(name);
+        review.setUSER_ID(user);
+        Reviewservice.addNewReview(review);
         return "redirect:/reviews";
     }
     @GetMapping("/review/{id}")
@@ -75,9 +82,16 @@ public class ReviewController {
     }
     @GetMapping("/review/{id}/edit")
     public String editReview(@PathVariable(value = "id") Integer REVIEW_ID, Model model) {
-        model.addAttribute("readReview", Reviewservice.ReadReview(REVIEW_ID));
+        review review = Reviewservice.findByReviewID(REVIEW_ID);
+        model.addAttribute("readReview", review);
         //return "review-edit";
         return "review_edit";
+    }
+    @PostMapping("/updateReview")
+    public String updateReview(@Valid review review, BindingResult bindingResult)
+    {
+        Reviewservice.UpdateOldReview(review, review.getReviewID());
+        return "redirect:/reviews";
     }
 
     @PostMapping("/review/{id}/edit")

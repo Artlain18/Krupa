@@ -14,37 +14,36 @@
     <header th:insert="blocks/header :: header"></header>
     <div class="container">
 
-        <div class="nav">
+        <div th:each="review: ${readReview}" class="nav">
             <ul>
                 <li><a href="#">Понравилось</a></li>
                 <li><a href="/reviews">Другие обзоры</a></li>
                 <li><a href="/games">Другие игры</a></li>
-                <li><a th:href="'/review/edit' ">Редактировать</a></li>
+                <li><a th:href="'/review/' + ${review.reviewID} + '/edit' ">Редактировать</a></li>
                 <li><a href="#">Изменить статус</a></li>
 
             </ul>
         </div>
-        <div class="content-wrapper">
+        <div th:each="review : ${readReview}" class="content-wrapper">
             <div class="total">
-                <h3>Оценки</h3>
+                <h3 th:text="${review.NAME}"></h3>
+                <p th:text="${review.MESSAGE}"></p>
+                <h3 >Оценки</h3>
                 <ul>
                     <li>Название обзора
-                        <p> Resident village</p><br>
+                        <p th:text="${review.NAME}"></p><br>
                     </li>
                     <li>Автор
-                        <p> Artlain</p><br>
+                        <p th:text="${review.USER_ID.NAME}"></p><br>
                     </li>
                     <li>Название игры
-                        <p> Resident village</p><br>
+                        <p th:text="${review.GAME_ID.NAME}"></p><br>
                     </li>
                     <li>Текст обзора
-                        <p> 10 из 10</p><br>
-                    </li>
-                    <li>Оценка обзора
-                        <p> 10</p><br>
+                        <p th:text="${review.MESSAGE}"></p><br>
                     </li>
                     <li>Статус
-                        <p> проверено</p><br>
+                        <p th:text="${review.statusID.statusMessage}"></p><br>
                     </li>
                 </ul>
 

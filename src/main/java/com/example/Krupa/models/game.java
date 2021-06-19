@@ -118,16 +118,8 @@ public class game implements Serializable{
     public game() {
     }
 
-    public game(String NAME, String DESCRIBE) {
-        this.DESCRIBE = DESCRIBE;
-        this.NAME = NAME;
-    }
-    public game(String NAME, String DESCRIBE, String BACK, String LOGO) {
-        this.DESCRIBE = DESCRIBE;
-        this.NAME = NAME;
-        this.BACK = BACK;
-        this.LOGO = LOGO;
-    }
+
+
     public game(String NAME, String DESCRIBE, String BACK, String LOGO, String GAMETRAILER, String TEASER, String PUBLISHER) {
         this.DESCRIBE = DESCRIBE;
         this.NAME = NAME;

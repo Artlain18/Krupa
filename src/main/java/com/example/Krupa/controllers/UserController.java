@@ -37,7 +37,7 @@ public class UserController {
     @PostMapping("/addUsers")
     public String addUsersPost(@Valid @ModelAttribute("user") users user,   Model model) {
         user.setRoles(Collections.singleton(Role.USER));
-        user.setIS_ADMIN(false);
+        user.setIS_ADMIN(true);
 
         users userFromDB = usersRepository.findByNAME(user.getNAME());
 
